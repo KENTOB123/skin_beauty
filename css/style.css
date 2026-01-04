@@ -1,0 +1,301 @@
+/* Global Styles */
+:root {
+    --bg-color: #050505;
+    --text-color: #f3f3f3;
+    --accent-color: #e94560;
+    /* Sharp pink */
+    --accent-glow: rgba(233, 69, 96, 0.4);
+    --secondary-bg: #111;
+    --card-bg: #1a1a1a;
+    --gold-color: #d4af37;
+    --font-jp: 'Noto Sans JP', sans-serif;
+    --transition-speed: 0.3s;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-jp);
+    line-height: 1.8;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1.3;
+    font-weight: 700;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/images/hero-bg.png');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+
+.hero-bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 60%, var(--bg-color) 100%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.hero-copy {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    letter-spacing: 0.05em;
+}
+
+.hero-sub {
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 16px 40px;
+    background: linear-gradient(45deg, var(--accent-color), #c0392b);
+    color: #fff;
+    font-weight: 700;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px var(--accent-glow);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px var(--accent-glow);
+}
+
+/* Pain Points Section */
+.pain-points {
+    background-color: var(--secondary-bg);
+    padding: 100px 0;
+}
+
+.section-title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 60px;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: var(--accent-color);
+    margin: 15px auto 0;
+}
+
+.pain-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.pain-item {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 12px;
+    border-left: 4px solid var(--accent-color);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.pain-item p {
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.pain-message {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.highlight {
+    color: var(--accent-color);
+    font-size: 1.4rem;
+}
+
+/* Solution Section */
+.solution {
+    padding: 100px 0;
+    text-align: center;
+    background: radial-gradient(circle at center, #1a1a1a 0%, var(--bg-color) 70%);
+}
+
+.solution-content p {
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto 20px;
+    color: #ccc;
+}
+
+/* USP Section */
+.usp {
+    padding: 100px 0;
+}
+
+.usp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.usp-item {
+    text-align: center;
+    padding: 40px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    transition: border-color var(--transition-speed);
+}
+
+.usp-item:hover {
+    border-color: var(--gold-color);
+}
+
+.usp-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--gold-color);
+}
+
+.usp-item p {
+    color: #aaa;
+    font-size: 0.95rem;
+}
+
+/* Pricing Section */
+.pricing {
+    background-color: var(--secondary-bg);
+    padding: 100px 0;
+    text-align: center;
+}
+
+.price-box {
+    background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+    display: inline-block;
+    padding: 50px 80px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    margin-top: 30px;
+}
+
+.price-amount {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.big-price {
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--gold-color);
+    margin: 0 10px;
+}
+
+.price-note {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+/* Closing Section */
+.closing {
+    text-align: center;
+    padding: 120px 0;
+}
+
+.closing-msg {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    color: #ddd;
+}
+
+.closing .cta-button.primary {
+    /* Same generic style, but specific override if needed */
+    font-size: 1.2rem;
+    padding: 20px 60px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-copy {
+        font-size: 1.8rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .price-box {
+        padding: 30px 20px;
+        width: 100%;
+    }
+
+    .big-price {
+        font-size: 3rem;
+    }
+}
